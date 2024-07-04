@@ -43,6 +43,13 @@ export default function Index() {
           </a>
         </li>
       </ul>
+      <h1 className="text-3xl">My Profile</h1>
+      <ul className="list-disc mt-4 pl-6 space-y-2">
+        <li>Name: Niti Pakjamsai</li>
+        <li>Class: Information Technology</li>
+        <li>E-mail <a href="mailto: niti.pak@rmutto.ac.th">Contract me</a></li>
+        <li><img src="image\iboss.jpg"></img></li> 
+        </ul>
     </div>
   );
 }
