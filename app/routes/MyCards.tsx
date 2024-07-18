@@ -1,4 +1,5 @@
 import { cards } from "./data";
+import { useState } from "react";
 
 function IsMember ({ act } : { act: boolean}) {
     if(act)
@@ -40,10 +41,16 @@ function Profile ({id, nam, bio, bgp, imgu, usrn, cdat, act} : {id:number, nam:s
 )}
 
 export default function MyCards () {
+    const [active, setActive] = useState(true);
+
     const name = "Niti Pakjamsai";
-    const note = "Web Programing and Software Engineering";
+    const note = "#Web Programing";
+    const note2 = "#Software Engineering"
     const chk = true;
-    const cardItems = cards.map(cardItem =>
+
+    const items = cards.filter((cardItem) => cardItem.active === active);
+
+    const cardItems = items.map((cardItem) => (
         <Profile
             id={cardItem.id}
             nam={cardItem.name}
@@ -54,13 +61,63 @@ export default function MyCards () {
             cdat={cardItem.createdat}
             act={cardItem.active}
         />
-    );
+    )
+  );
+  function handleClickAtive() {
+    setActive(true);
+    //alert("After, handleClickAtive --> "+active);
+  }
+  function handleClickNoAtive() {
+  
+    setActive(false);
+    //alert("After, handleClickNoAtive --> "+active);
+  }
 return (
+  <div className="m-10 bg-sky-300 p-10 rounded-3xl">
     <>
-    <h1>My Cards: Niti Pakjamsai</h1>
-    <hr></hr>
-    {/* <Profile /> */}
-    {cardItems}
+      <h1 className="font-bold text-3xl">My Cards: {name}</h1>
+      <div className="flex flex-row">
+        <div className="basis-1/4 m-2 p-3 font-bold bg-red-200 rounded-3xl">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="size-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          {note}
+        </div>
+        <div className="basis-1/2 m-2 p-3 bg-green-200 rounded-3xl">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="size-6"
+          >
+            <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" />
+            <path
+              fill-rule="evenodd"
+              d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          {note2}
+        </div>
+      </div>
+      {}
+      <hr />
+      <div className="flex flex-row">
+      <button className="w1/2 bg-green-700 text-green-100 rounded-3xl" onClick={handleClickAtive}>Active</button>
+      <button className="w1/2 bg-green-700 text-green-100 rounded-3xl" onClick={handleClickNoAtive}>No Active</button>
+      </div>
+      {/* <center><Profiles /></center> */}
+      {cardItems}
     </>
-)}
-
+  </div>
+);
+}
