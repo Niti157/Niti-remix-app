@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { sculpturelist } from "./SculptureLists";
+import AppMenu from "./template/menu";
 
 export default function EProject() {
     const [index,setIndex] = useState(0);
@@ -15,8 +16,10 @@ export default function EProject() {
 
     let sculpture = sculpturelist[index];
 
+
+
     return (
-        <>
+        <><AppMenu/>
             <button className="w1/2 bg-green-700 text-green-100 rounded-3xl" onClick={handleClickNext}>
                 Next   
             </button>

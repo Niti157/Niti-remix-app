@@ -1,5 +1,6 @@
 import { cards } from "./data";
 import { useState } from "react";
+import AppMenu from "./template/menu";
 
 function IsMember ({ act } : { act: boolean}) {
     if(act)
@@ -10,7 +11,6 @@ function IsMember ({ act } : { act: boolean}) {
 
 function Profile ({id, nam, bio, bgp, imgu, usrn, cdat, act} : {id:number, nam:string, bio:string, bgp:string, imgu:string, usrn:string, cdat:string, act:boolean })
 {   return (
-
 <div className="max-w-sm w-full lg:max-w-full lg:flex">
   <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{backgroundImage: `url(${bgp})` ,color:"blue" }} title="Woman holding a mug">
   </div>
@@ -32,8 +32,11 @@ function Profile ({id, nam, bio, bgp, imgu, usrn, cdat, act} : {id:number, nam:s
       <img className="w-10 h-10 rounded-full mr-4" src="/image/img3.jpg" alt="Avatar of Boss"/>
       <div className="text-sm">
         <p className="text-gray-900 leading-none">{nam}</p>
-        <p className="text-gray-600">{cdat}</p>
-      </div>
+        <p className="text-gray-600">{cdat}</p> 
+      </div> 
+          <a href={`/card/${id}`} className="basis-1/4 m-2 p-3 font-bold bg-green-300 rounded-3xl">
+          View
+          </a>
     </div>
   </div>
 </div>
@@ -74,7 +77,8 @@ export default function MyCards () {
     //alert("After, handleClickNoAtive --> "+active);
   }
 return (
-  <div className="m-10 bg-sky-300 p-10 rounded-3xl">
+
+  <div className="m-10 bg-sky-300 p-10 rounded-3xl"><AppMenu/>
     <>
       <h1 className="font-bold text-3xl">My Cards: {name}</h1>
       <div className="flex flex-row">
