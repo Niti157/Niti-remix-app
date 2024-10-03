@@ -69,7 +69,7 @@ export default function BookLists(){
                     </div>
                     <div className="p-2 m-2 border">
                         <a href={`/sec02_bookDetail/${item.id}`}>[รายละเอียด]</a>
-                        <a href={`/sec02_bookEdit/${item.id}`}>[แก้ไข]</a>
+                        <a href={`/sec02_bookEditForm/${item.id}`}>[แก้ไข]</a>
                         <button onClick={(e) => handleDelete(`${item.id}`)}>[ลบ]</button>
                     </div>
                     </>
